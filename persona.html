@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Persona - Metegol Futbol 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Formulario de Persona</h2>
+    <form onsubmit="return redirectAfterSubmit();" id="personaForm">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="accion" class="form-label">Acción:</label>
+            <select id="accion" name="accion" class="form-control" required>
+                <option value="alta">Alta</option>
+                <option value="baja">Baja</option>
+                <option value="modificar">Modificar</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar Persona</button>
+    </form>
+</div>
+<!-- Script para manejar el formulario y la redirección -->
+<script>
+    function redirectAfterSubmit() {
+        // Obtener datos del formulario
+        const nombre = document.getElementById('nombre').value;
+        const apellido = document.getElementById('apellido').value;
+        const accion = document.getElementById('accion').value;
+        if (nombre && apellido && accion) {
+            // Redirigir a la página de informe con los parámetros en la URL
+            window.location.href = "informe_persona.html?nombre=" + encodeURIComponent(nombre) + "&apellido=" + encodeURIComponent(apellido) + "&accion=" + encodeURIComponent(accion);
+        }
+        return false; // Evita que el formulario se envíe de forma predeterminada
+    }
+</script>
+<!-- Vincular JS de Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
